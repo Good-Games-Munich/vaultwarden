@@ -1,0 +1,44 @@
+# This file serves as the base to build on top on.
+version: "3.8"
+services:
+  # https://hub.docker.com/r/vaultwarden/server
+  vaultwarden:
+    # https://hub.docker.com/r/vaultwarden/server/tags
+    image: vaultwarden/server:1.29.0-alpine
+
+    # https://www.baeldung.com/ops/docker-compose-restart-policies
+    restart: always
+
+    # Default vaultwarden port. This line is not here to configure something. it is more of a configuration so chaning it will do nothing
+    ports:
+      - 80
+
+    # Configurations: https://github.com/dani-garcia/vaultwarden/blob/main/.env.template
+    # All configs should be set here as environment variable
+    environment:
+      # Controls whether event logging is enabled for organizations
+      ORG_EVENTS_ENABLED: 1
+      # TODO: change SIGNUPS_ALLOWED to 0 and SIGNUPS_VERIFY to 1 after setup for org
+      # Controls if new users can register
+      SIGNUPS_ALLOWED: 1
+      # Controls if new users need to verify their email address upon registration
+      SIGNUPS_VERIFY: 1
+      # Require new device emails. When a user logs in an email is required to be sent.
+      # If sending the email fails the login attempt will fail!!
+      REQUIRE_DEVICE_EMAIL: 1
+      # Name shown in the invitation emails that don't come from a specific organization
+      INVITATION_ORG_NAME: Vault
+      # Mail specific settings, set SMTP_FROM and either SMTP_HOST or USE_SENDMAIL to enable the mail service.
+      SMTP_HOST: ${SMTP_HOST:?Missing environment variable see readme}
+      SMTP_FROM: ${SMTP_FROM:?Missing environment variable see readme}
+      SMTP_FROM_NAME: Vault
+      SMTP_USERNAME: ${SMTP_USERNAME:?Missing environment variable see readme}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:?Missing environment variable see readme}
+
+    # https://docs.docker.com/storage/volumes/
+    # Define a named volume to persist data
+    volumes:
+      - vaultwardenData:/data
+
+volumes:
+  vaultwardenData:

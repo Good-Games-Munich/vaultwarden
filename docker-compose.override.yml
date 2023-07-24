@@ -1,0 +1,17 @@
+# This file extends the docker-compose.yml with develop configurations/overrides. https://docs.docker.com/compose/compose-file/13-merge/
+# This file gets applied automatically when no --file parameter is provided
+version: "3.8"
+services:
+  vaultwarden:
+    # Add a name to easy identify
+    container_name: vaultwardenDev
+
+    environment:
+      # The domain must match the address from where you access the server
+      DOMAIN: http://localhost:3300
+      # Try to force color in the terminal because pretty!
+      FORCE_COLOR: 1
+
+    # Map container port to host port. https://docs.docker.com/compose/networking/
+    ports:
+      - 3300:80
