@@ -28,6 +28,8 @@ services:
       REQUIRE_DEVICE_EMAIL: 1
       # Name shown in the invitation emails that don't come from a specific organization
       INVITATION_ORG_NAME: Vault
+      # Controls whether group support is enabled for organizations
+      ORG_GROUPS_ENABLED: 1
       # Mail specific settings, set SMTP_FROM and either SMTP_HOST or USE_SENDMAIL to enable the mail service.
       SMTP_HOST: ${SMTP_HOST:?Missing environment variable see readme}
       SMTP_FROM: ${SMTP_FROM:?Missing environment variable see readme}
