@@ -20,7 +20,7 @@ services:
       ORG_EVENTS_ENABLED: 1
       # TODO: change SIGNUPS_ALLOWED to 0 and SIGNUPS_VERIFY to 1 after setup for org
       # Controls if new users can register
-      SIGNUPS_ALLOWED: 1
+      SIGNUPS_ALLOWED: 0
       # Controls if new users need to verify their email address upon registration
       SIGNUPS_VERIFY: 1
       # Require new device emails. When a user logs in an email is required to be sent.
