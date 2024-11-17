@@ -4,7 +4,7 @@ services:
   # https://hub.docker.com/r/vaultwarden/server
   vaultwarden:
     # https://hub.docker.com/r/vaultwarden/server/tags
-    image: vaultwarden/server:1.29.0-alpine
+    image: vaultwarden/server:1.32.4-alpine
 
     # https://www.baeldung.com/ops/docker-compose-restart-policies
     restart: always
@@ -18,7 +18,6 @@ services:
     environment:
       # Controls whether event logging is enabled for organizations
       ORG_EVENTS_ENABLED: 1
-      # TODO: change SIGNUPS_ALLOWED to 0 and SIGNUPS_VERIFY to 1 after setup for org
       # Controls if new users can register
       SIGNUPS_ALLOWED: 0
       # Controls if new users need to verify their email address upon registration
