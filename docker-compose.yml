@@ -4,12 +4,12 @@ services:
   # https://hub.docker.com/r/vaultwarden/server
   vaultwarden:
     # https://hub.docker.com/r/vaultwarden/server/tags
-    image: vaultwarden/server:1.32.4-alpine
+    image: vaultwarden/server:1.37.1-alpine
 
     # https://www.baeldung.com/ops/docker-compose-restart-policies
     restart: always
 
-    # Default vaultwarden port. This line is not here to configure something. it is more of a configuration so chaning it will do nothing
+    # Default vaultwarden port. This line is not here to configure something. it is more of a configuration so changing it will do nothing
     ports:
       - 80
 
