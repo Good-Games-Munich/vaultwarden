@@ -9,9 +9,9 @@ services:
     # https://www.baeldung.com/ops/docker-compose-restart-policies
     restart: always
 
-    # Default vaultwarden port. This line is not here to configure something. it is more of a configuration so changing it will do nothing
-    ports:
-      - 80
+    # Default vaultwarden port. Only reachable by other containers on the compose network. Do not use `ports` here: it would publish the port on a random host port.
+    expose:
+      - "80"
 
     # Configurations: https://github.com/dani-garcia/vaultwarden/blob/main/.env.template
     # All configs should be set here as environment variable
